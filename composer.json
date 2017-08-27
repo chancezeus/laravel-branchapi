@@ -1,0 +1,50 @@
+{
+    "name": "chancezeus/laravel-branchapi",
+    "description": "Branch.io integration for laravel",
+    "keywords": ["laravel", "branch.io"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mark van Beek",
+            "email": "mark@appelit.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/support": "5.*",
+        "guzzlehttp/guzzle": "^6.3",
+        "nesbot/carbon": "^1.22"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~5.7",
+        "squizlabs/php_codesniffer": "^3.0",
+        "orchestra/testbench": "~3.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ChanceZeus\\BranchApi\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ChanceZeus\\BranchApi\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "cs": "phpcs --standard=psr2 src/"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.0.1-dev"
+        },
+        "laravel": {
+            "providers": [
+                "ChanceZeus\\BranchApi\\BranchApiServiceProvider"
+            ],
+            "aliases": {
+                "BranchApi": "ChanceZeus\\BranchApi\\Facades\\BranchApi"
+            }
+        }
+    }
+}
