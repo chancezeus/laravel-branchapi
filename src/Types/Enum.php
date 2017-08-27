@@ -63,7 +63,7 @@ abstract class Enum
             throw new \InvalidArgumentException("{$value} is not a valid " . static::class);
         }
 
-        if (!array_key_exists($name, self::$instances[$calledClass][$name])) {
+        if (!array_key_exists($name, self::$instances[$calledClass])) {
             self::$instances[$calledClass][$name] = new static($name, $value);
         }
 
