@@ -134,6 +134,11 @@ class BranchApi
                         return !empty($value);
                     });
 
+                    if (isset($query['data'])) {
+                        $query = array_merge($query, $query['data']);
+                        unset($query['data']);
+                    }
+
                     if (preg_match('#\.app\.link$#', $domain)) {
                         return "https://{$domain}/?" . http_build_query($query);
                     }
@@ -152,6 +157,11 @@ class BranchApi
         $query = array_filter($link->build(), function ($value) {
             return !empty($value);
         });
+
+        if (isset($query['data'])) {
+            $query = array_merge($query, $query['data']);
+            unset($query['data']);
+        }
 
         return "https://{$domain}/?" . http_build_query($query);
     }
