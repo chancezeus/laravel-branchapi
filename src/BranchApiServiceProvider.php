@@ -17,12 +17,6 @@ class BranchApiServiceProvider extends ServiceProvider
         $this->publishes([
             realpath(__DIR__ . '/../config/branch.php') => config_path('branch.php'),
         ], 'config');
-
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                CreateLink::class
-            ]);
-        }
     }
 
     /**
