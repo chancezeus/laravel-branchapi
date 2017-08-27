@@ -15,7 +15,7 @@ class BranchApiServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            realpath(__DIR__ . '../config/branch.php') => config_path('branch.php'),
+            realpath(__DIR__ . '/../config/branch.php') => config_path('branch.php'),
         ], 'config');
 
         if ($this->app->runningInConsole()) {
@@ -33,7 +33,7 @@ class BranchApiServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            realpath(__DIR__ . '../config/branch.php'), 'branch'
+            realpath(__DIR__ . '/../config/branch.php'), 'branch'
         );
 
         $this->app->singleton(BranchApi::class, function () {
