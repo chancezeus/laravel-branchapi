@@ -134,7 +134,11 @@ class BranchApi
                         return !empty($value);
                     });
 
-                    return "https://{$domain}/?" . http_build_query($query);
+                    if (preg_match('#\.app\.link$#', $domain)) {
+                        return "https://{$domain}/?" . http_build_query($query);
+                    }
+
+                    return "https://{$domain}/a/{$this->key}?" . http_build_query($query);
                 });
         }
 
@@ -337,7 +341,7 @@ class BranchApi
      */
     private function decodeResponse(ResponseInterface $response): array
     {
-        if (($statusCode = $response->getStatusCode()) % 100 !== 2) {
+        if (($statusCode = $response->getStatusCode()) < 200 || $statusCode >= 300) {
             throw new BranchApiException("Request failed with statuscode {$statusCode}");
         }
 
